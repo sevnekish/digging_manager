@@ -15,6 +15,8 @@ gem 'webpacker', '~> 4.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'activerecord-postgis-adapter'
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'

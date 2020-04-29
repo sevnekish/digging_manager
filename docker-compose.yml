@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   web:
     build:
@@ -11,14 +11,16 @@ services:
     volumes:
       - .:/digging_manager
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - postgres
 
   postgres:
-    image: postgres:11.1
+    restart: always
+    image: postgis/postgis:9.5-2.5-alpine
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - ./.docker/postgres:/var/lib/postgresql/data
-    env_file: .env
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust

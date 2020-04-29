@@ -2,7 +2,8 @@
 
 ### System dependencies
 
-* postgresql 11.1
+* postgresql 12.2
+* postgis 3.0.1
 
 ### Configuration
 * Rename and fill with real data .env.tt to .env

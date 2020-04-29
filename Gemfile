@@ -25,6 +25,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
   gem 'rubocop', '~> 0.82.0', require: false
   gem 'rubocop-rspec', require: false
   gem 'web-console', '>= 3.3.0'

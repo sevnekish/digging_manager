@@ -25,3 +25,7 @@ RSpec/EmptyLineAfterHook:
 Style/BlockDelimiters:
   IgnoredMethods:
     - expect
+
+RSpec/HookArgument:
+  Exclude:
+    - 'support/**/*'

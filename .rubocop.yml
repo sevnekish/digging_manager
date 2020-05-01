@@ -45,3 +45,6 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false

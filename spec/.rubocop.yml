@@ -29,3 +29,7 @@ Style/BlockDelimiters:
 RSpec/HookArgument:
   Exclude:
     - 'support/**/*'
+
+Layout/LineLength:
+  Exclude:
+    - 'factories/**/*'

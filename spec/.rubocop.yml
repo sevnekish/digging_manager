@@ -39,3 +39,6 @@ RSpec/NestedGroups:
 
 Metrics/BlockLength:
   Enabled: false
+
+RSpec/ExpectChange:
+  Enabled: false

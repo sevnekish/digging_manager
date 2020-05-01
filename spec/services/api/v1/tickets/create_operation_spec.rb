@@ -11,9 +11,11 @@ RSpec.describe Api::V1::Tickets::CreateOperation do
     end
 
     it 'returns result with persisted ticket' do
-      ticket = result.value!
-      expect(ticket).to be_persisted
-      expect(ticket.excavator).to be_persisted
+      expect(result.value!).to be_persisted
+    end
+
+    it 'returns result with persisted ticket excavator' do
+      expect(result.value!.excavator).to be_persisted
     end
 
     it 'creates new ticket' do

@@ -7,6 +7,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'puma', '~> 3.11'
 gem 'pg', '>= 0.18', '< 2.0'
 
+gem 'dry-monads'
 gem 'dry-validation'
 gem 'active_model_serializers'
 

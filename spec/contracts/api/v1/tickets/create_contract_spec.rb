@@ -44,7 +44,7 @@ RSpec.describe Api::V1::Tickets::CreateContract do
         end
 
         it 'returns unsuccessful result' do
-          expect(result.failure?).to be_failure
+          expect(result).to be_failure
         end
 
         it 'contains appropriate error message' do

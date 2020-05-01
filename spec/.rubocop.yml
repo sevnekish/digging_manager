@@ -33,3 +33,9 @@ RSpec/HookArgument:
 Layout/LineLength:
   Exclude:
     - 'factories/**/*'
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false

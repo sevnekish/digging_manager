@@ -1,8 +1,8 @@
 RSpec.shared_examples 'field with type validation' do |field, type|
   context "when the #{field} is set to the wrong type" do
     wrong_value_map = {
-        str: 111,
-        default: 'string',
+      str: 111,
+      default: 'string'
     }
 
     before do
@@ -11,7 +11,7 @@ RSpec.shared_examples 'field with type validation' do |field, type|
     end
 
     it 'returns unsuccessful result' do
-      expect(subject.failure?).to be_truthy
+      expect(subject).to be_failure
     end
 
     it 'contains appropriate error message' do

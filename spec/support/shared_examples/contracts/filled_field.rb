@@ -5,7 +5,7 @@ RSpec.shared_examples 'field with presence validation' do |field|
     end
 
     it 'returns unsuccessful result' do
-      expect(subject.failure?).to be_truthy
+      expect(subject).to be_failure
     end
 
     it 'contains appropriate error message' do

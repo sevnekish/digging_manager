@@ -1,5 +1,5 @@
 RSpec.describe Api::V1::Tickets::CreateContract do
-  subject(:result) { Api::V1::Tickets::CreateContract.new.call(params) }
+  subject(:result) { described_class.new.call(params) }
 
   let(:params) do
     {
@@ -25,7 +25,7 @@ RSpec.describe Api::V1::Tickets::CreateContract do
 
   context 'when params are valid' do
     it 'returns successful result' do
-      expect(result.success?).to be_truthy
+      expect(result).to be_success
     end
 
     it 'contains no errors' do
@@ -44,11 +44,11 @@ RSpec.describe Api::V1::Tickets::CreateContract do
         end
 
         it 'returns unsuccessful result' do
-          expect(subject.failure?).to be_truthy
+          expect(result.failure?).to be_failure
         end
 
         it 'contains appropriate error message' do
-          expect(subject.errors[:digsite_info]).to include('Polygon field has invalid format')
+          expect(result.errors[:digsite_info]).to include('Polygon field has invalid format')
         end
       end
     end
@@ -73,11 +73,6 @@ RSpec.describe Api::V1::Tickets::CreateContract do
       it_behaves_like 'field with type validation', :response_due_date_time_at, :date_time
     end
 
-    context 'when response_due_date_time_at is invalid' do
-      it_behaves_like 'field with presence validation', :response_due_date_time_at
-      it_behaves_like 'field with type validation', :response_due_date_time_at, :date_time
-    end
-
     context 'when primary_sa_code is invalid' do
       it_behaves_like 'field with presence validation', :primary_sa_code
       it_behaves_like 'field with type validation', :primary_sa_code, :str
@@ -92,40 +87,50 @@ RSpec.describe Api::V1::Tickets::CreateContract do
       it_behaves_like 'field with type validation', :excavator, :hash
     end
 
-    context 'when excavator fields are invalid' do
-      context 'when company_name is invalid' do
-        it_behaves_like 'field with presence validation', [:excavator, :company_name]
-        it_behaves_like 'field with type validation', [:excavator, :company_name], :str
-      end
+    context 'when excavator company_name is invalid' do
+      field = %i[excavator company_name]
 
-      context 'when crew_on_site is invalid' do
-        it_behaves_like 'field with presence validation', [:excavator, :crew_on_site]
-        it_behaves_like 'field with type validation', [:excavator, :crew_on_site], :bool
-      end
+      it_behaves_like 'field with presence validation', field
+      it_behaves_like 'field with type validation', field, :str
+    end
 
-      context 'when address is invalid' do
-        it_behaves_like 'field with type validation', [:excavator, :address], :hash
-      end
+    context 'when excavator crew_on_site is invalid' do
+      field = %i[excavator crew_on_site]
 
-      context 'when street is invalid' do
-        it_behaves_like 'field with presence validation', [:excavator, :address, :street]
-        it_behaves_like 'field with type validation', [:excavator, :address, :street], :str
-      end
+      it_behaves_like 'field with presence validation', field
+      it_behaves_like 'field with type validation', field, :bool
+    end
 
-      context 'when city is invalid' do
-        it_behaves_like 'field with presence validation', [:excavator, :address, :city]
-        it_behaves_like 'field with type validation', [:excavator, :address, :city], :str
-      end
+    context 'when excavator address is invalid' do
+      it_behaves_like 'field with type validation', %i[excavator address], :hash
+    end
 
-      context 'when state is invalid' do
-        it_behaves_like 'field with presence validation', [:excavator, :address, :state]
-        it_behaves_like 'field with type validation', [:excavator, :address, :state], :str
-      end
+    context 'when excavator street is invalid' do
+      field = %i[excavator address street]
 
-      context 'when zip is invalid' do
-        it_behaves_like 'field with presence validation', [:excavator, :address, :zip]
-        it_behaves_like 'field with type validation', [:excavator, :address, :zip], :str
-      end
+      it_behaves_like 'field with presence validation', field
+      it_behaves_like 'field with type validation', field, :str
+    end
+
+    context 'when excavator city is invalid' do
+      field = %i[excavator address city]
+
+      it_behaves_like 'field with presence validation', field
+      it_behaves_like 'field with type validation', field, :str
+    end
+
+    context 'when excavator state is invalid' do
+      field = %i[excavator address state]
+
+      it_behaves_like 'field with presence validation', field
+      it_behaves_like 'field with type validation', field, :str
+    end
+
+    context 'when excavator zip is invalid' do
+      field = %i[excavator address zip]
+
+      it_behaves_like 'field with presence validation', field
+      it_behaves_like 'field with type validation', field, :str
     end
   end
 end

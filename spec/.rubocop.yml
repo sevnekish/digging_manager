@@ -42,3 +42,6 @@ Metrics/BlockLength:
 
 RSpec/ExpectChange:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false

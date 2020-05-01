@@ -27,4 +27,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include HashHelper
+  config.include ControllerHelpers, type: :controller
 end

@@ -1,9 +1,11 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <%- @ticket_attributes.each do |column_name| %>
+      <%- %w[id request_number request_type sequence_number response_due_date_time_at].each do |column_name| %>
         <th><%= I18n.t("models.ticket.attributes.#{column_name}") %></th>
       <% end %>
+
+      <th><%= t('models.excavator.attributes.company_name') %></th>
 
       <th><%= t('views.common.actions') %></th>
     </tr>

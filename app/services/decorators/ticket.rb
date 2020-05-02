@@ -6,6 +6,7 @@ class Decorators::Ticket < SimpleDelegator
   def excavator
     @excavator ||= begin
       return if super.blank?
+
       Decorators::Excavator.new(super)
     end
   end

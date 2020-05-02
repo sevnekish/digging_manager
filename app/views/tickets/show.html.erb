@@ -11,7 +11,7 @@
 
       <table class="table table-striped">
         <tbody>
-          <%- @attributes[:ticket].each do |attribute|  %>
+          <%- %w[request_number request_type sequence_number response_due_date_time_at primary_sa_code additional_sa_codes created_at].each do |attribute|  %>
             <tr>
               <td class="font-weight-bold"><%= t("models.ticket.attributes.#{attribute}") %></td>
               <td><%= @ticket.public_send(attribute) %></td>
@@ -26,7 +26,7 @@
 
       <table class="table table-striped">
         <tbody>
-          <%- @attributes[:excavator].each do |attribute|  %>
+          <%- %w[company_name crew_on_site full_address].each do |attribute|  %>
             <tr>
               <td class="font-weight-bold"><%= t("models.excavator.attributes.#{attribute}") %></td>
               <td><%= @ticket.excavator.try(attribute) %></td>

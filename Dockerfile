@@ -21,11 +21,8 @@ RUN bundle check || bundle install
 
 COPY package.json yarn.lock ./
 
-RUN yarn install
-
 COPY . $APP_HOME
 
+RUN yarn install
+
 EXPOSE 3000
-
-CMD ["bundle", "exec", "puma", "-C", "./config/puma.rb"]
-

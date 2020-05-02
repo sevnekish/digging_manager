@@ -7,7 +7,7 @@
 
 ### Configuration
 * Rename and fill with real data .env.tt to .env
-* create empty .env if you do not need any additional configuration
+* GOOGLE_MAP_API_KEY is required
 
 ## Getting Started
 
@@ -30,5 +30,5 @@ $ docker-compose up postgres
 ```
 3\. Create db and run migrations in web container
 ```ShellSession
-$ docker exec <web container name> rake db:create db:migrate
+$ docker-compose run web rake db:create db:migrate
 ```

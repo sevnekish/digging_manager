@@ -1,21 +1,22 @@
 module Api::V1::Tickets
   class CreateOperation < Api::Operation
     def call
-      mapped_attributes = AttributesMapper.new(params).call
-
       validation_result = yield validate_params(mapped_attributes)
-      attributes = validation_result.values
 
       Ticket.transaction do
-        ticket = yield create_ticket(attributes.except(:excavator))
+        ticket = yield create_ticket(validation_result.values.except(:excavator))
 
-        ticket.excavator = yield create_excavator(attributes[:excavator].merge(ticket: ticket))
+        ticket.excavator = yield create_excavator(validation_result.values[:excavator].merge(ticket: ticket))
 
         Success(ticket)
       end
     end
 
     private
+
+    def mapped_attributes
+      AttributesMapper.new(params).call
+    end
 
     def validate_params(mapped_attributes)
       CreateContract.new.call(mapped_attributes).to_monad

@@ -3,7 +3,7 @@ FROM ruby:2.6.6
 ENV APP_HOME /digging_manager
 
 RUN apt-get update -qq && \
-    apt-get install -y nodejs postgresql-client vim && \
+    apt-get install -y postgresql-client vim && \
     apt-get install curl imagemagick -y && \
     apt-get install -y libvips-tools
 
@@ -19,16 +19,13 @@ COPY Gemfile Gemfile.lock .ruby-version ./
 
 RUN bundle check || bundle install
 
-COPY package.json ./
+COPY package.json yarn.lock ./
 
-RUN yarn check || yarn install --check-files
+RUN yarn install
 
 COPY . $APP_HOME
 
 EXPOSE 3000
 
-RUN rails assets:precompile RAILS_ENV=production
-
-# The main command to run when the container starts.
-CMD ["bundler", "exec", "puma"]
+CMD ["bundle", "exec", "puma", "-C", "./config/puma.rb"]
 

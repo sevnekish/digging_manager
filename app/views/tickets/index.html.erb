@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <%- @ticket_attributes.each do |column_name| %>
+        <th><%= I18n.t("models.ticket.attributes.#{column_name}") %></th>
+      <% end %>
+
+      <th><%= t('views.common.actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render(@tickets) %>
+  </tbody>
+</table>
+
+<%== pagy_bootstrap_nav(@pagy) %>

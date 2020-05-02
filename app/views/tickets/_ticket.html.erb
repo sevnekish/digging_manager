@@ -1,0 +1,8 @@
+<tr>
+  <td><%= ticket.id %></td>
+  <td><%= ticket.request_number %></td>
+  <td><%= ticket.request_type %></td>
+  <td><%= ticket.sequence_number %></td>
+  <td><%= ticket.response_due_date_time_at %></td>
+  <td><%= link_to(t('views.common.actions.show'), ticket_path(ticket)) %></td>
+</tr>

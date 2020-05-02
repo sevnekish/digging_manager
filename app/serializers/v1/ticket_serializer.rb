@@ -15,6 +15,6 @@ class V1::TicketSerializer < V1::BaseSerializer
   end
 
   def digsite_info
-    object.digsite_info.coordinates[0]
+    object.digsite_info&.coordinates&.[](0)
   end
 end

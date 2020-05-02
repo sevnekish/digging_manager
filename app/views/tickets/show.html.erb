@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-8">
+    <div class="container h-100" id="ticket-map" data-api-key="<%= google_map_config.api_key %>" data-default-center="<%= google_map_config.default_center.to_json %>" data-polygon-coordinates="<%= @ticket.digsite_info %>">
+    </div>
+  </div>
+
+
+  <div class="col-4">
+    <div class="row">
+      <h3><%= t('models.ticket.name') %></h3>
+
+      <table class="table table-striped">
+        <tbody>
+          <%- @attributes[:ticket].each do |attribute|  %>
+            <tr>
+              <td class="font-weight-bold"><%= t("models.ticket.attributes.#{attribute}") %></td>
+              <td><%= @ticket.public_send(attribute) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <h3><%= t('models.excavator.name') %></h3>
+
+      <table class="table table-striped">
+        <tbody>
+          <%- @attributes[:excavator].each do |attribute|  %>
+            <tr>
+              <td class="font-weight-bold"><%= t("models.excavator.attributes.#{attribute}") %></td>
+              <td><%= @ticket.excavator.try(attribute) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -22,7 +22,7 @@ FactoryBot.define do
   factory :excavator do
     ticket
 
-    company_name { FFaker::Company.name }
+    company_name { Faker::Company.name }
     address do
       {
         street: Faker::Address.street_address,

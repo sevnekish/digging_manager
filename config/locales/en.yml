@@ -1,4 +1,33 @@
 en:
+  views:
+    common:
+      all_tickets: All tickets
+      show: Show
+      actions: Actions
+
+  models:
+    ticket:
+      name: Ticket
+      attributes:
+        id: ID
+        request_number: Request number
+        request_type: Request type
+        sequence_number: Sequence number
+        response_due_date_time_at: Response Due Date Time
+        primary_sa_code: Primary SA Code
+        additional_sa_codes: Additional SA Codes
+    excavator:
+      name: Excavator
+      attributes:
+        id: ID
+        company_name: Company Name
+        address: Address
+        street: Street
+        city: City
+        state: State
+        zip: ZIP code
+        crew_on_site: Crew On Site
+
   dry_schema:
     errors:
       digsite_info:
